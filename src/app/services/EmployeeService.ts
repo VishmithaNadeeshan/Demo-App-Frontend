@@ -17,7 +17,15 @@ export class EmployeeService{
     }
 
     register(data:any) {
-    return this.http.post(`${this.baseUrl}/add`, data, {
+    return this.http.post(`${this.baseUrl}/register`, data, {
+      responseType: 'text',
+    });
+  }
+   searchById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.baseUrl}/search-by-id/${id}`);
+  }
+    update(employeeData: any) {
+    return this.http.put(`${this.baseUrl}/update`, employeeData, {
       responseType: 'text',
     });
   }
